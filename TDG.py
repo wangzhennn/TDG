@@ -21,7 +21,6 @@ st.markdown("""
 standard_responsibilities = pd.DataFrame({
     'Standard Responsibility': [
         'Formulation of Organizational Change Process', 
-        'Formulation of Organizational Change Process', 
         'Organizational Diagnosis', 
         'Design of Organizational Change Plan', 
         'Release of Organizational Change Plan', 
