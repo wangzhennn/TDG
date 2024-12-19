@@ -43,7 +43,7 @@ input_responsibilities = st.text_area(
 if st.button("Analyze Responsibilities"):
     if input_responsibilities.strip():
         # Translate the Chinese responsibilities to English using deep_translator
-        translated_responsibilities = [GoogleTranslator(source='zh', target='en').translate(resp.strip()) for resp in input_responsibilities.splitlines() if resp.strip()]
+        translated_responsibilities = [GoogleTranslator(source='zh-cn', target='en').translate(resp.strip()) for resp in input_responsibilities.splitlines() if resp.strip()]
         
         # Step 2: Analyze and map responsibilities
         st.header("Mapped Responsibilities")
