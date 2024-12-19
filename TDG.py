@@ -232,5 +232,5 @@ if st.button("Analyze Responsibilities"):
         
         # Step 4: Determine the dominant HR pillar
         dominant_pillar = max(pillar_scores, key=pillar_scores.get)
-        st.success(f"This employee aligns most with the {dominant_pillar} pillar.")
+        st.success(f"This employee 目前 aligns most with the {dominant_pillar} pillar.")
   
