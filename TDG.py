@@ -166,7 +166,7 @@ input_responsibilities = st.text_area(
     "每条职责一行", 
     "")
 
-if st.button("Analyze Responsibilities"):
+if st.button("开始落位分析"):
     if input_responsibilities.strip():
         # Translate the Chinese responsibilities to English using deep_translator
         translated_responsibilities = [GoogleTranslator(source='zh-CN', target='en').translate(resp.strip()) for resp in input_responsibilities.splitlines() if resp.strip()]
