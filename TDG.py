@@ -29,8 +29,6 @@ input_responsibilities = st.text_area(
 if st.button("Analyze Responsibilities"):
     if input_responsibilities.strip():
         employee_responsibilities = [resp.strip() for resp in input_responsibilities.splitlines() if resp.strip()]
-        st.write("## Entered Responsibilities:")
-        st.write(employee_responsibilities)
         
         # Step 2: Analyze and map responsibilities
         st.header("Mapped Responsibilities")
