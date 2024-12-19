@@ -5,18 +5,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import plotly.express as px
 from deep_translator import GoogleTranslator
 
-# Custom CSS to change background color and title color
-st.markdown("""
-    <style>
-    .main {
-        background-color: white;
-    }
-    .title {
-        color: #003990;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 st.markdown("<h2 style='font-size: 20px;'>TDG人力资源三支柱落位工具</h2>", unsafe_allow_html=True)
 
 # Load standard responsibilities and their mapping to HR pillars
