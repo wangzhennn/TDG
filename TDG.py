@@ -7,11 +7,11 @@ from deep_translator import GoogleTranslator
 
 st.markdown("""
     <style>
-    .title {
-        font-size: 24px;  /* Adjust the size of the title */
+    .css-18e3th9 {
+        font-size: 24px !important;  /* Adjust the title font size */
     }
-    .header {
-        font-size: 18px;  /* Adjust the size of the header */
+    .css-1d391kg {
+        font-size: 18px !important;  /* Adjust the header font size */
     }
     </style>
 """, unsafe_allow_html=True)
