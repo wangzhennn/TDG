@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 import plotly.express as px
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 
 # Custom CSS to change background color and title color
 st.markdown("""
@@ -16,9 +16,6 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-
-# Initialize the translator
-translator = Translator()
 
 # Load standard responsibilities and their mapping to HR pillars
 standard_responsibilities = pd.DataFrame({
@@ -38,15 +35,15 @@ standard_responsibilities = pd.DataFrame({
 st.title("TDG HROT Tool")
 
 # Step 1: User inputs employee responsibilities in Chinese
-st.header("Please Input Your Responsibilities")
+st.header("Please Input Your Responsibilities (in Chinese)")
 input_responsibilities = st.text_area(
     "Enter responsibilities (one per line):", 
     "")
 
 if st.button("Analyze Responsibilities"):
     if input_responsibilities.strip():
-        # Translate the Chinese responsibilities to English
-        translated_responsibilities = [translator.translate(resp.strip(), src='zh-cn', dest='en').text for resp in input_responsibilities.splitlines() if resp.strip()]
+        # Translate the Chinese responsibilities to English using deep_translator
+        translated_responsibilities = [GoogleTranslator(source='zh', target='en').translate(resp.strip()) for resp in input_responsibilities.splitlines() if resp.strip()]
         
         # Step 2: Analyze and map responsibilities
         st.header("Mapped Responsibilities")
@@ -110,5 +107,4 @@ if st.button("Analyze Responsibilities"):
         # Step 4: Determine the dominant HR pillar
         dominant_pillar = max(pillar_scores, key=pillar_scores.get)
         st.success(f"This employee aligns most with the {dominant_pillar} pillar.")
-    else:
-        st.warning("Please input at least one responsibility.")
+  
