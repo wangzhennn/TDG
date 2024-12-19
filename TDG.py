@@ -203,8 +203,8 @@ if st.button("开始落位分析"):
             pillar_scores['HRSSC'] += standard_resp['HRSSC Score']
         
         # Display mapped results without scores
-        results_df = pd.DataFrame(mapped_results)
-        st.write(results_df)
+        #results_df = pd.DataFrame(mapped_results)
+        #st.write(results_df)
         
         # Step 3: Calculate percentages for HR pillars
         total_score = sum(pillar_scores.values())
