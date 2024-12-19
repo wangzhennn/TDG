@@ -5,17 +5,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import plotly.express as px
 from deep_translator import GoogleTranslator
 
-st.markdown("""
-    <style>
-    .css-18e3th9 {
-        font-size: 24px !important;  /* Adjust the title font size */
-    }
-    .css-1d391kg {
-        font-size: 18px !important;  /* Adjust the header font size */
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 # Load standard responsibilities and their mapping to HR pillars
 standard_responsibilities = pd.DataFrame({
     'Standard Responsibility': [
