@@ -148,7 +148,7 @@ st.image('tdg.png')
 
 st.title("TDG人力资源三支柱落位工具")
 
-st.header("Hello郭哥，请输入您的职责")
+st.header("请输入您的职责")
 input_responsibilities = st.text_area(
     "每条职责一行", 
     "")
