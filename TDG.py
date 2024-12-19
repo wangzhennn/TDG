@@ -172,7 +172,7 @@ if st.button("开始落位分析"):
         translated_responsibilities = [GoogleTranslator(source='zh-CN', target='en').translate(resp.strip()) for resp in input_responsibilities.splitlines() if resp.strip()]
         
         # Step 2: Analyze and map responsibilities
-        st.header("Mapped Responsibilities")
+        #st.header("Mapped Responsibilities")
         
         # Vectorization for similarity analysis
         tfidf = TfidfVectorizer()
@@ -213,11 +213,11 @@ if st.button("开始落位分析"):
                 pillar_scores[pillar] = (pillar_scores[pillar] / total_score) * 100
         
         # Create a donut chart for pillar scores
-        st.header("Pillar Scores (as percentages)")
+        st.header("结果")
         fig = px.pie(
             values=list(pillar_scores.values()),
             names=list(pillar_scores.keys()),
-            title="Pillar Scores Distribution",
+            title="百分比",
             hole=0.5  # Make it a donut chart
         )
 
