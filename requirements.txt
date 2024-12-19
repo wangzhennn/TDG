@@ -1,3 +1,7 @@
 pandas
 streamlit
 scikit-learn
+openai
+tqdm
+tiktoken
+langchain
