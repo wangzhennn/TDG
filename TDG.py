@@ -17,6 +17,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+st.markdown("<h2 style='font-size: 20px;'>TDG人力资源三支柱落位工具</h2>", unsafe_allow_html=True)
+
 # Load standard responsibilities and their mapping to HR pillars
 standard_responsibilities = pd.DataFrame({
     'Standard Responsibility': [
