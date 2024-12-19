@@ -18,10 +18,10 @@ standard_responsibilities = pd.DataFrame({
 })
 
 # Streamlit app configuration
-st.title("TDG HR Ulrich Model Analysis")
+st.title("TDG HROT Tool")
 
 # Step 1: User inputs employee responsibilities
-st.header("Input Employee Responsibilities")
+st.header("Pleasue Input Ur Responsibilities")
 input_responsibilities = st.text_area(
     "Enter responsibilities (one per line):", 
     "")
