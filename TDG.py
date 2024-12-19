@@ -158,12 +158,12 @@ standard_responsibilities = pd.DataFrame({
 })
 
 # Streamlit app configuration
-st.title("TDG HROT Tool")
+st.title("TDG人力资源三支柱落位工具")
 
 # Step 1: User inputs employee responsibilities in Chinese
-st.header("Please Input Your Responsibilities")
+st.header("请输入您的职责")
 input_responsibilities = st.text_area(
-    "Enter responsibilities (one per line):", 
+    "每条职责一行", 
     "")
 
 if st.button("Analyze Responsibilities"):
@@ -232,5 +232,5 @@ if st.button("Analyze Responsibilities"):
         
         # Step 4: Determine the dominant HR pillar
         dominant_pillar = max(pillar_scores, key=pillar_scores.get)
-        st.success(f"This employee 目前 aligns most with the {dominant_pillar} pillar.")
+        st.success(f"经计算，您目前的职责更贴近 {dominant_pillar} ")
   
