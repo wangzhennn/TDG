@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
-import plotly.express as px
+import matplotlib.pyplot as plt
 
 # Load standard responsibilities and their mapping to HR pillars
 standard_responsibilities = pd.DataFrame({
@@ -72,17 +72,14 @@ if st.button("Analyze Responsibilities"):
             for pillar in pillar_scores:
                 pillar_scores[pillar] = (pillar_scores[pillar] / total_score) * 100
         
-        # Create a donut chart for pillar scores
-        st.header("Pillar Scores (as percentages)")
-        fig = px.pie(
-            values=list(pillar_scores.values()),
-            names=list(pillar_scores.keys()),
-            title="Pillar Scores Distribution",
-            hole=0.5  # Make it a donut chart
-        )
-        st.plotly_chart(fig)
+        # Step 4: Visualize pillar scores with a circular pie chart
+        st.header("Pillar Scores")
+        fig, ax = plt.subplots()
+        ax.pie(pillar_scores.values(), labels=pillar_scores.keys(), autopct='%1.1f%%', startangle=90, colors=['#4CAF50', '#FFC107', '#F44336'])
+        ax.set_title("HR Pillar Scores")
+        st.pyplot(fig)
         
-        # Step 4: Determine the dominant HR pillar
+        # Determine the dominant HR pillar
         dominant_pillar = max(pillar_scores, key=pillar_scores.get)
         st.success(f"This employee aligns most with the {dominant_pillar} pillar.")
     else:
