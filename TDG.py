@@ -3,6 +3,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 import plotly.express as px
+from googletrans import Translator
 
 # Custom CSS to change background color and title color
 st.markdown("""
@@ -15,6 +16,9 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
+# Initialize the translator
+translator = Translator()
 
 # Load standard responsibilities and their mapping to HR pillars
 standard_responsibilities = pd.DataFrame({
@@ -33,22 +37,23 @@ standard_responsibilities = pd.DataFrame({
 # Streamlit app configuration
 st.title("TDG HROT Tool")
 
-# Step 1: User inputs employee responsibilities
-st.header("Please Input Your Responsibilities")
+# Step 1: User inputs employee responsibilities in Chinese
+st.header("Please Input Your Responsibilities (in Chinese)")
 input_responsibilities = st.text_area(
     "Enter responsibilities (one per line):", 
     "")
 
 if st.button("Analyze Responsibilities"):
     if input_responsibilities.strip():
-        employee_responsibilities = [resp.strip() for resp in input_responsibilities.splitlines() if resp.strip()]
+        # Translate the Chinese responsibilities to English
+        translated_responsibilities = [translator.translate(resp.strip(), src='zh-cn', dest='en').text for resp in input_responsibilities.splitlines() if resp.strip()]
         
         # Step 2: Analyze and map responsibilities
         st.header("Mapped Responsibilities")
         
         # Vectorization for similarity analysis
         tfidf = TfidfVectorizer()
-        all_texts = standard_responsibilities['Standard Responsibility'].tolist() + employee_responsibilities
+        all_texts = standard_responsibilities['Standard Responsibility'].tolist() + translated_responsibilities
         tfidf_matrix = tfidf.fit_transform(all_texts)
         
         # Calculate similarity
@@ -61,7 +66,7 @@ if st.button("Analyze Responsibilities"):
         mapped_results = []
         pillar_scores = {'HRCOE': 0, 'HRBP': 0, 'HRSSC': 0}
         
-        for i, emp_resp in enumerate(employee_responsibilities):
+        for i, emp_resp in enumerate(translated_responsibilities):
             max_index = similarity_matrix[i].argmax()
             standard_resp = standard_responsibilities.iloc[max_index]
             mapped_results.append({
@@ -85,7 +90,7 @@ if st.button("Analyze Responsibilities"):
                 pillar_scores[pillar] = (pillar_scores[pillar] / total_score) * 100
         
         # Create a donut chart for pillar scores
-        st.header("Pillar Scores (%)")
+        st.header("Pillar Scores (as percentages)")
         fig = px.pie(
             values=list(pillar_scores.values()),
             names=list(pillar_scores.keys()),
