@@ -21,7 +21,7 @@ standard_responsibilities = pd.DataFrame({
 st.title("TDG HROT Tool")
 
 # Step 1: User inputs employee responsibilities
-st.header("Pleasue Input Ur Responsibilities")
+st.header("Please Input Your Responsibilities")
 input_responsibilities = st.text_area(
     "Enter responsibilities (one per line):", 
     "")
@@ -55,10 +55,7 @@ if st.button("Analyze Responsibilities"):
             standard_resp = standard_responsibilities.iloc[max_index]
             mapped_results.append({
                 'Employee Responsibility': emp_resp,
-                'Mapped Standard Responsibility': standard_resp['Standard Responsibility'],
-                'HRCOE Score': standard_resp['HRCOE Score'],
-                'HRBP Score': standard_resp['HRBP Score'],
-                'HRSSC Score': standard_resp['HRSSC Score']
+                'Mapped Standard Responsibility': standard_resp['Standard Responsibility']
             })
             
             # Accumulate pillar scores
@@ -66,6 +63,7 @@ if st.button("Analyze Responsibilities"):
             pillar_scores['HRBP'] += standard_resp['HRBP Score']
             pillar_scores['HRSSC'] += standard_resp['HRSSC Score']
         
+        # Display mapped results without scores
         results_df = pd.DataFrame(mapped_results)
         st.write(results_df)
         
@@ -75,7 +73,7 @@ if st.button("Analyze Responsibilities"):
             for pillar in pillar_scores:
                 pillar_scores[pillar] = (pillar_scores[pillar] / total_score) * 100
         
-        st.header("Pillar Scores")
+        st.header("Pillar Scores (as percentages)")
         st.write(pillar_scores)
         
         # Step 4: Determine the dominant HR pillar
