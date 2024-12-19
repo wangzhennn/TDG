@@ -38,7 +38,7 @@ standard_responsibilities = pd.DataFrame({
 st.title("TDG HROT Tool")
 
 # Step 1: User inputs employee responsibilities in Chinese
-st.header("Please Input Your Responsibilities (in Chinese)")
+st.header("Please Input Your Responsibilities")
 input_responsibilities = st.text_area(
     "Enter responsibilities (one per line):", 
     "")
