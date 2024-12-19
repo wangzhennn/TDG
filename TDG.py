@@ -5,7 +5,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import plotly.express as px
 from deep_translator import GoogleTranslator
 
-st.markdown("<h2 style='font-size: 20px;'>TDG人力资源三支柱落位工具</h2>", unsafe_allow_html=True)
 
 # Load standard responsibilities and their mapping to HR pillars
 standard_responsibilities = pd.DataFrame({
@@ -150,10 +149,10 @@ standard_responsibilities = pd.DataFrame({
 st.image('tdg.png')
 
 # Streamlit app configuration
-st.title("TDG人力资源三支柱落位工具")
+st.markdown("<h2 style='font-size: 24px;'>TDG人力资源三支柱落位工具</h2>", unsafe_allow_html=True)
 
 # Step 1: User inputs employee responsibilities in Chinese
-st.header("请输入您的职责")
+st.markdown("<h2 style='font-size: 18px;'>请输入您的职责</h2>", unsafe_allow_html=True)
 input_responsibilities = st.text_area(
     "每条职责一行", 
     "")
