@@ -8,64 +8,13 @@ standard_responsibilities = pd.DataFrame({
     'Standard Responsibility': [
         "Formulation of Organizational Change Process",
         "Organizational Diagnosis",
-        "Design of Organizational Change Plan",
-        "Release of Organizational Change Plan",
-        "Organizational Culture Design",
-        "Organizational Culture Implementation and Change Design",
-        "Design of Organizational Culture Activities",
-        "Implementation of Organizational Culture Activities",
-        "Design/Modification of Job Grading System",
-        "Development/Maintenance of Job Setting Standards",
-        "Job Setting/Modification",
-        "Job Value Assessment",
-        "Development of Overall HR Plan (including TianTong Innovation Academy)",
-        "Efficiency and Headcount Management",
-        "HR Budget Management",
-        "HR Cost Management",
-        "HR Policy Management",
-        "Pre-Investment Due Diligence and Post-Investment Management",
-        "Development of Shared HR Service Policies",
-        "Change Management Support",
-        "HR Digital Strategy Management",
-        "Development/Maintenance of Organizational Performance Management System",
-        "Organizational Performance Target Setting/Modification",
-        "Organizational Performance Evaluation",
-        "Organizational Performance Management Appeals Handling",
-        "Development/Maintenance of Recruitment and Allocation Policies",
-        "Recruitment Planning",
-        "Recruitment Demand Management",
-        "External Recruitment Channel Management",
-        "External Recruitment Implementation",
-        "Employer Branding",
-        "Mandatory Allocation",
-        "Internal Talent Market Allocation",
-        "Long-Term Assignment Arrangements",
-        "Labor Dispatch Demand Management",
-        "Labor Dispatch Implementation",
-        "Probation Management",
-        "Employee Resignation Management",
-        "Employee Retirement Management",
-        "Management of Underperformers’ Exit",
-        "Labor Contract Renewal Management",
-        "Management of Qualification Standards",
-        "Qualification Certification",
-        "Development of High-Potential Talent Standards",
-        "High-Potential Talent Identification Scheme Design",
-        "Implementation of High-Potential Talent Identification",
-        "Development/Maintenance of Career Development Policies",
-        "Implementation of Talent Promotions, Demotions, and Transfers",
-        "Planning for Talent Capability Development",
-        "Planning for On-Job Talent Capability Enhancement"
-    ],
+        "Design of Organizational Change Plan"],
     'HRCOE Score': [
-        1.44, 0.72, 0.72, 0.72, 1.44, 1.44, 0.72, 0.72, 1.44, 1.44, 0, 0, 1.44, 0, 0, 0, 1.44, 1.44, 0.72, 0, 1.44, 1.44, 0, 0, 0, 1.44, 0, 0, 1.44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.44, 0, 1.44, 1.44, 0, 1.44, 0, 0
-    ],
+        1.44, 0.72, 0.72],
     'HRBP Score': [
-        0, 1.44, 1.44, 1.44, 0, 0, 1.44, 1.44, 0, 0.72, 1.44, 1.44, 0.72, 1.44, 1.44, 1.44, 0.72, 0, 0, 1.44, 0.72, 0.72, 1.44, 1.44, 1.44, 0, 1.44, 1.44, 0.72, 1.44, 0.72, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 1.44, 0.72, 1.44, 0.72, 1.44, 0, 1.44, 1.44, 1.44
-    ],
+        0, 1.44, 1.44],
     'HRSSC Score': [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1.44, 0, 0.72, 0.72, 0, 0, 0, 0, 0, 0, 0.72, 0.72, 0.72, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.72, 0.72, 0, 0, 0, 0, 0
-    ]
+        0, 0, 0]
 })
 
 # Streamlit app configuration
