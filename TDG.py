@@ -18,7 +18,7 @@ standard_responsibilities = pd.DataFrame({
 })
 
 # Streamlit app configuration
-st.title("Employee Responsibility Analysis Tool")
+st.title("TDG HR Ulrich Transformation Tool")
 
 # Step 1: User inputs employee responsibilities
 st.header("Input Employee Responsibilities")
