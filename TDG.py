@@ -5,7 +5,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import plotly.express as px
 from deep_translator import GoogleTranslator
 
-# Load standard responsibilities and their mapping to HR pillars
 standard_responsibilities = pd.DataFrame({
     'Standard Responsibility': [
         'Formulation of Organizational Change Process', 
@@ -147,10 +146,8 @@ standard_responsibilities = pd.DataFrame({
 
 st.image('tdg.png')
 
-# Streamlit app configuration
 st.title("TDG人力资源三支柱落位工具")
 
-# Step 1: User inputs employee responsibilities in Chinese
 st.header("请输入您的职责")
 input_responsibilities = st.text_area(
     "每条职责一行", 
@@ -158,24 +155,17 @@ input_responsibilities = st.text_area(
 
 if st.button("开始落位分析"):
     if input_responsibilities.strip():
-        # Translate the Chinese responsibilities to English using deep_translator
         translated_responsibilities = [GoogleTranslator(source='zh-CN', target='en').translate(resp.strip()) for resp in input_responsibilities.splitlines() if resp.strip()]
         
-        # Step 2: Analyze and map responsibilities
-        #st.header("Mapped Responsibilities")
-        
-        # Vectorization for similarity analysis
         tfidf = TfidfVectorizer()
         all_texts = standard_responsibilities['Standard Responsibility'].tolist() + translated_responsibilities
         tfidf_matrix = tfidf.fit_transform(all_texts)
         
-        # Calculate similarity
         similarity_matrix = cosine_similarity(
             tfidf_matrix[len(standard_responsibilities):],
             tfidf_matrix[:len(standard_responsibilities)]
         )
         
-        # Mapping responsibilities to closest standard responsibility
         mapped_results = []
         pillar_scores = {'HRCOE': 0, 'HRBP': 0, 'HRSSC': 0}
         
@@ -187,40 +177,32 @@ if st.button("开始落位分析"):
                 'Mapped Standard Responsibility': standard_resp['Standard Responsibility']
             })
             
-            # Accumulate pillar scores
             pillar_scores['HRCOE'] += standard_resp['HRCOE Score']
             pillar_scores['HRBP'] += standard_resp['HRBP Score']
             pillar_scores['HRSSC'] += standard_resp['HRSSC Score']
-        
-        # Display mapped results without scores
-        #results_df = pd.DataFrame(mapped_results)
-        #st.write(results_df)
-        
-        # Step 3: Calculate percentages for HR pillars
+
         total_score = sum(pillar_scores.values())
         if total_score > 0:
             for pillar in pillar_scores:
                 pillar_scores[pillar] = (pillar_scores[pillar] / total_score) * 100
-        
-        # Create a donut chart for pillar scores
+
         st.header("结果")
         fig = px.pie(
             values=list(pillar_scores.values()),
             names=list(pillar_scores.keys()),
             title="百分比",
-            hole=0.5  # Make it a donut chart
+            hole=0.5  
         )
 
-        # Adjust the chart size
+
         fig.update_layout(
-            width=500,  # Set chart width
-            height=500,  # Set chart height
-            margin=dict(t=40, b=40, l=40, r=40)  # Add some margin around the chart
+            width=500, 
+            height=500,  
+            margin=dict(t=40, b=40, l=40, r=40) 
         )
 
         st.plotly_chart(fig)
         
-        # Step 4: Determine the dominant HR pillar
         dominant_pillar = max(pillar_scores, key=pillar_scores.get)
         st.success(f"经计算，您目前的职责更贴近 {dominant_pillar} ")
   
