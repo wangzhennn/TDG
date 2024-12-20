@@ -206,5 +206,5 @@ if st.button("开始落位分析"):
         dominant_pillar = max(pillar_scores, key=pillar_scores.get)
         st.success(f"经计算，您目前的职责更贴近 {dominant_pillar} ")
   
-        #results_df = pd.DataFrame(mapped_results)
-        #st.write(results_df)
+        results_df = pd.DataFrame(mapped_results)
+        st.write(results_df)
